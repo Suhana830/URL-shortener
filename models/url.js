@@ -15,11 +15,11 @@ const UrlSchema = new mongoose.Schema({
     Description:{
         type:String,
         require:true
+    },
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"user"
     }
-    // createdBy:{
-    //     type:mongoose.Schema.Types.ObjectId,
-    //     ref:"user"
-    // }
    
 });
 

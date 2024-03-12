@@ -15,18 +15,6 @@ router.get("/signup",(req,res)=>{
     return res.render("signup");
 })
 
-router.get("/:ShortId",async(req,res)=>{
-    const shortid = req.params.ShortId;
-   
-    const OriginalId =await Url.findOne({Short_Id:shortid});
-    if(!OriginalId)
-    return res.redirect("/");
 
-    console.log(OriginalId);
-
-   
-    res.redirect(OriginalId.redirectUrl);
-
-})
 
 module.exports = router;

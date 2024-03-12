@@ -3,6 +3,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const URL = require("./models/url")
 const app = express();
+const cookieParser = require("cookie-parser");
 
 
 //router
@@ -16,7 +17,7 @@ mongoose.connect("mongodb://127.0.0.1:27017/Short_url_DataBase").then(()=>consol
 app.use(express.urlencoded({extended:false}))
 app.set("view engine", "ejs");
 app.use(express.json());
-// app.use(cookieParser());
+app.use(cookieParser());
 
 app.use("/",StaticRouter)
 app.use("/user",userRouter)

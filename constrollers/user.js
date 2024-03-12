@@ -1,4 +1,5 @@
 const User = require("../models/user")
+const {generateToken} = require("../service/Auth")
 
 exports.createUser = async(req,res)=>{
  
@@ -13,6 +14,10 @@ exports.createUser = async(req,res)=>{
     const user = await User.findOne({email:email});
     console.log(user);
 
+    const token = generateToken(user);
+    res.cookie("uid",token);
+    console.log("cookie created");
+
     return res.redirect("/");
 }
 
@@ -25,6 +30,9 @@ exports.LoginUser = async(req,res)=>{
     return res.redirect("/login");
 
     console.log(user);
+    const token = generateToken(user);
+    res.cookie("uid",token);
+    console.log("cookie created");
 
     return res.redirect("/");
     

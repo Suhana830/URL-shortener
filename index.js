@@ -1,6 +1,7 @@
 const express = require("express");
 //mongoose is use to connect with mongodb
 const mongoose = require("mongoose");
+const URL = require("./models/url")
 const app = express();
 
 

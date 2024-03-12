@@ -15,7 +15,7 @@ exports.CreateUrl = async(req,res)=>{
         Original_Id:url
     });
 
-    const user_url = await url.findOne({Short_Id:shortid});
+    const user_url = await Url.findOne({Short_Id:shortid});
     console.log(user_url)
 
     return res.redirect("/");

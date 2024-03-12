@@ -12,6 +12,10 @@ const UrlSchema = new mongoose.Schema({
         require:true,
         
     },
+    Description:{
+        type:String,
+        require:true
+    }
     // createdBy:{
     //     type:mongoose.Schema.Types.ObjectId,
     //     ref:"user"

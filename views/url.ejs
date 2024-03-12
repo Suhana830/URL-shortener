@@ -21,7 +21,7 @@
     padding: 30px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    max-width: 400px;
+    max-width: 600px;
     width: 100%;
   }
 
@@ -52,6 +52,11 @@
     width: 100%;
     font-size: 16px;
   }
+  .p-5{
+    width:100px;
+    
+    overflow:hidden;
+  }
 
   button:hover {
     background-color: #45a049;
@@ -62,9 +67,33 @@
 <div class="container">
   <h2>URL shortener</h2>
   <form action="/url" method="post">
+    <input type="text" name="des" placeholder="Description" required>
     <input type="text" name="url" placeholder="Enter your Url" required>
    <button type="submit">Generate</button>
   </form>
+
+  <% if (locals.urls) { %>
+    <table>
+      <thead>
+        <th>S. No</th>
+        <th>Description</th>
+        <th>Short_id</th>
+       
+      </thead>
+      <tbody>
+        <% urls.forEach((url, index) => { %>
+        <tr>
+          <td class="p-5"><%= index + 1 %></td>
+          <td class="p-5"><%= url.Description%></td>
+          <td class="p-5">http://localhost:8001/url<%= url.Short_Id %></td>
+          
+          
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    <% } %>
+
 </div>
 </body>
 </html>

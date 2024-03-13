@@ -1,5 +1,6 @@
 const Url = require("../models/url");
 var ids = require('short-id');
+const {decodedToken} = require("../service/Auth")
 
 exports.CreateUrl = async(req,res)=>{
 
@@ -14,7 +15,12 @@ exports.CreateUrl = async(req,res)=>{
         res.send('UID cookie is not present');
     } 
 
-    const user = req.cookies.uid;
+    const user = decodedToken(req.cookies.uid);
+    console.log(user.id);
+
+
+    
+
     await Url.create({
         Short_Id:shortid,
         Original_Id:url,
@@ -24,10 +30,10 @@ exports.CreateUrl = async(req,res)=>{
 
 
 
-    const user_url = await Url.findOne({Short_Id:shortid,createdBy:user.id});
-    console.log(user_url)
+    // const user_url = await Url.findOne({});
+    // console.log(user_url)
 
-    const allurls = await Url.find({});
+    const allurls = await Url.find({ createdBy:user.id})
     console.log(allurls)
 
     return res.render("url",{

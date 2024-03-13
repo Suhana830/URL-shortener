@@ -5,6 +5,7 @@ const UrlSchema = new mongoose.Schema({
         type:String,
         require:true,
         unique:true
+       
 
     },
     Original_Id:{
@@ -18,10 +19,11 @@ const UrlSchema = new mongoose.Schema({
     },
     createdBy:{
         type:mongoose.Schema.Types.ObjectId,
-        ref:"user"
+        ref:"users"
     }
    
 });
+
 
 const Url = new mongoose.model("url",UrlSchema);
 

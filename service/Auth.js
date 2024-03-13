@@ -20,8 +20,15 @@ function verifyToken(token){
         console.error('JWT verification failed:', err.message);
     } else {
         console.log('Decoded JWT payload:', decoded);
+        return decoded;
     }
     });
 }
 
-module.exports = {generateToken,verifyToken}
+function decodedToken(token){
+    const decoded = jwt.decode(token);
+    return decoded;
+}
+
+
+module.exports = {generateToken,verifyToken,decodedToken}
